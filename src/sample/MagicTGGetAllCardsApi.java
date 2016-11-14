@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class MagicTGGetAllCardsApi {
 
-    private static String url="https://api.magicthegathering.io/v1/cards?page=5&pageSize=100";
+    private static String url="https://api.magicthegathering.io/v1/cards?page=5&pageSize=20";
 
 
         public ArrayList<Card> getCards() {
@@ -29,7 +29,7 @@ public class MagicTGGetAllCardsApi {
 
             JSONObject jsonO = new JSONObject(HttpUtils.get(url));
             JSONArray  jsonCards = jsonO.getJSONArray("cards");
-            String name, type, imageUrl, cardColor, rarity;
+            String name, type, imageUrl, cardColor, rarity, description;
 
             for (int i = 0; i < jsonCards.length(); ++i) {
 
@@ -41,8 +41,10 @@ public class MagicTGGetAllCardsApi {
                 type = object.getString("type");
                 //cardColor = object.getString("colors");
                 imageUrl = object.getString("imageUrl");
+                if(!object.has("text")) description = "No description available";
+                else description = object.getString("text");
 
-                Card c = new Card(name, rarity, type, imageUrl, "null");
+                Card c = new Card(name, rarity, type, imageUrl, "null", description);
                 cards.add(c);
 
             }

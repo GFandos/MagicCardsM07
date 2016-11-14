@@ -11,22 +11,16 @@ public class Card {
     private String type;
     private String imageUrl;
     private String color;
+    private String description;
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public Card(String _name, String _rarity, String _type, String _imageUrl, String _color) {
+    public Card(String _name, String _rarity, String _type, String _imageUrl, String _color, String _description) {
 
         name = _name;
         rarity = _rarity;
         type = _type;
         imageUrl = _imageUrl;
         color = _color;
+        description = _description;
 
     }
 
@@ -43,6 +37,10 @@ public class Card {
 
     public String getName() {
         return name;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void setName(String name) {
@@ -63,5 +61,13 @@ public class Card {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
