@@ -5,6 +5,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
 import javax.swing.text.html.ListView;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class Controller {
 
@@ -15,14 +17,15 @@ public class Controller {
 
         MagicTGGetAllCardsApi api = new MagicTGGetAllCardsApi();
 
-        ObservableList<Card> cards = api.getCards();
-        ObservableList<Card> cardNames = FXCollections.observableArrayList ();
+        ArrayList<Card> cards = api.getCards();
+
+        ObservableList<String> cardNames = FXCollections.observableArrayList ();
         for(int i = 0; i < cards.size(); ++i) {
-        //    cardNames.set(cards.get(i).getName()) = ;
+            cardNames.add(cards.get(i).getName());
         }
 
 
-        cardsListView.setItems(cards);
+        cardsListView.setItems(cardNames);
 
     }
 }

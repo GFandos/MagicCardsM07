@@ -21,9 +21,9 @@ public class MagicTGGetAllCardsApi {
     private static String url="https://api.magicthegathering.io/v1/cards?page=5&pageSize=100";
 
 
-    public ObservableList<Card> getCards() {
+        public ArrayList<Card> getCards() {
 
-        ObservableList<Card> cards = FXCollections.observableArrayList ();
+        ArrayList<Card> cards = new ArrayList<> ();
 
         try {
 
@@ -36,6 +36,7 @@ public class MagicTGGetAllCardsApi {
                 JSONObject object = jsonCards.getJSONObject(i);
 
                 name = object.getString("name");
+                System.out.println("name:" + name);
                 rarity = object.getString("rarity");
                 type = object.getString("type");
                 //cardColor = object.getString("colors");
